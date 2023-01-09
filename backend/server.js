@@ -27,6 +27,7 @@ app.get("/annonces", async function (req, res) {
 
 // POST / Permet de créer une annonce en transmettant des infos (title, description, price, image) au serveur via le "corps" de la requête (paramètres de type body).
 app.post("/creermonannonce", async function (req, res) {
+  // Je crée une nouvelle instance de ma collection Annonce.
   const newAnnonce = new Annonce({
     title: req.body.title,
     description: req.body.description,
