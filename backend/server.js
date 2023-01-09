@@ -43,7 +43,7 @@ app.post("/creermonannonce", async function (req, res) {
 app.put("/modifier/:id", async function (req, res) {
   // Je recherche dans ma BD "Annonce", une annonce via son ID (req.params.id).
   const annonce = await Annonce.findById(req.params.id);
-  // Lorsque j'ai trouvé l'annonce que je veux modifier, ce que j'écris via le corps de la requête (req.body.title) remplacera le titre dans annonce (annonce.title) en BD.
+  // Ce que j'écris via le champs de type body (req.body.title) remplacera le titre dans l'annonce (annonce.title) en BD.
   annonce.title = req.body.title;
   // Je sauvegarde mon annonce dans la BD avec la méthode mongoose save() après ma modification.
   await annonce.save();
