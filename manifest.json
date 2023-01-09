@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Hello Extensions of the world!",
+  "name": "My Mood Up",
   "description": "Base Level Extension",
-  "version": "1.0",
+  "version": "1.0.0",
   "action": {
-    "default_popup": "hello.html",
-    "default_icon": "hello_extensions.png"
+    "default_popup": "popup.html",
+    "default_icon": "/img/small_icon.png"
   }
 }
