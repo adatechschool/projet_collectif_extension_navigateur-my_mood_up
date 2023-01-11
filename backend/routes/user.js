@@ -3,6 +3,8 @@ const router = express.Router();
 const uid2 = require("uid2");
 const SHA256 = require("crypto-js/sha256");
 const encBase64 = require("crypto-js/enc-Base64");
+
+//Import models
 const User = require("../models/User");
 
 router.post("/user/signup", async (req, res) => {
@@ -61,4 +63,4 @@ router.post("/user/login", async (req, res) => {
   }
 });
 
-module.exports = router; 
+module.exports = router;
