@@ -5,10 +5,13 @@ const mongoose = require("mongoose");
 
 //import models
 const User = require("./models/User");
+const Mood = require("./models/Mood");
 
 //import routes
 const userRoutes = require("./routes/user");
 app.use(userRoutes);
+const moodRoutes = require ("./routes/mood");
+app.use(moodRoutes);
 
 mongoose
   .set("strictQuery", false)
