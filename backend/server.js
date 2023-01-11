@@ -10,7 +10,7 @@ const Mood = require("./models/Mood");
 //import routes
 const userRoutes = require("./routes/user");
 app.use(userRoutes);
-const moodRoutes = require ("./routes/mood");
+const moodRoutes = require("./routes/mood");
 app.use(moodRoutes);
 
 mongoose
