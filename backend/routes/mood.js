@@ -35,4 +35,24 @@ router.get("/moods", async (req, res) => {
   res.json(getMoods);
 });
 
+router.put("/mood/update/:id", async (req, res) => {
+  const moodToModify = await Mood.findById(req.params.id);
+
+  if (req.body.icon) {
+    moodToModify.icon = req.body.icon;
+  }
+  if (req.body.title) {
+    moodToModify.title = req.body.title;
+  }
+  if (req.body.needs) {
+    moodToModify.needs = req.body.needs;
+  }
+  if (moodToModify) {
+    await moodToModify.save();
+    res.json("Successfully modified!");
+  } else {
+    res.json("Id not found!");
+  }
+});
+
 module.exports = router;
