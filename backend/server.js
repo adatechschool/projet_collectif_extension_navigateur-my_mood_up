@@ -1,23 +1,26 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 app.use(express.json());
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 //import models
-const User = require("./models/User");
-const Mood = require("./models/Mood");
+const User = require('./models/User');
+const Mood = require('./models/Mood');
+const YourMood = require('./models/YourMood');
 
 //import routes
-const userRoutes = require("./routes/user");
+const userRoutes = require('./routes/user');
 app.use(userRoutes);
-const moodRoutes = require("./routes/mood");
+const moodRoutes = require('./routes/mood');
 app.use(moodRoutes);
+const YourMoodRoutes = require('./routes/yourMood');
+app.use(YourMoodRoutes);
 
 mongoose
-  .set("strictQuery", false)
-  .connect("mongodb://localhost/my_mood_up")
-  .then(() => console.log("Connected to the DB!"));
+  .set('strictQuery', false)
+  .connect('mongodb://localhost/my_mood_up')
+  .then(() => console.log('Connected to the DB!'));
 
 app.listen(8080, () => {
-  console.log("server has started");
+  console.log('server has started');
 });
