@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// Import models
+//import models
 const Mood = require("../models/Mood");
 
 router.post("/mood/create", async (req, res) => {
