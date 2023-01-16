@@ -1,0 +1,27 @@
+{
+  "name": "My Mood Up",
+  "description": "Identifiez et analysez vos émotions. 🌊",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "./img/icon-16x16.png",
+    "32": "./img/icon-32x32.png",
+    "48": "./img/icon-48x48.png",
+    "128": "./img/icon-128x128.png"
+  },
+  "background": {
+    "service_worker": "./js/background.js"
+  },
+  "action": {
+    "default_popup": "./login.html",
+    "default_icons": {
+      "16": "./img/icon-16x16.png",
+      "32": "./img/icon-32x32.png",
+      "48": "./img/icon-48x48.png",
+      "128": "./img/icon-128x128.png"
+    }
+  },
+  "options_page": "./options.html",
+  "permissions": ["activeTab", "tabs", "storage", "scripting"],
+  "host_permissions": ["https://www.google.com/*"]
+}
