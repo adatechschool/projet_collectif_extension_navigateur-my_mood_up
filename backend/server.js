@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 const mongoose = require("mongoose");
+var cors = require("cors");
+app.use(cors());
 
 //import routes
 const userRoutes = require("./routes/user");
