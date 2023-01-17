@@ -6,11 +6,14 @@ const handleSubmit = async (email, username, password) => {
       password: password,
     });
     if (response.data.token) {
-      window.location.href = "/index.html";
+      window.location.href = "/login.html";
     } else {
       alert("Une erreur est survenue, veuillez réssayer.");
     }
   } catch (error) {
+    if (error.response.status === 409) {
+      alert("Cet email existe déja !");
+    }
     console.log(error.message);
   }
 };
