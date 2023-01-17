@@ -1,4 +1,4 @@
-function addElement(icon, title) {
+function addElement(icon, title, selector) {
   // create a new div element
   const newDiv = document.createElement("option");
   // and give it some content
@@ -6,7 +6,7 @@ function addElement(icon, title) {
   // add the text node to the newly created div
   newDiv.appendChild(newContent);
   // add the newly created element and its content into the DOM
-  const currentDiv = document.getElementById("moods");
+  const currentDiv = document.querySelector(selector);
   currentDiv.appendChild(newDiv);
 }
 
@@ -17,8 +17,7 @@ const fetchData = async () => {
   moodsData.map((mood) => {
     const icon = mood.icon;
     const title = mood.title;
-
-    addElement(icon, title);
+    addElement(icon, title, "#moods");
   });
 };
 
