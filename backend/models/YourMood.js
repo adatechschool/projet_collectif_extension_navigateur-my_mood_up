@@ -1,21 +1,34 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const YourMood = mongoose.model('YourMoods', {
-  icon: {
+// const YourMood = mongoose.model('YourMoods', {
+//   icon: {
+//     type: String,
+//     unique: true,
+//     required: true,
+//   },
+//   title: {
+//     type: String,
+//     unique: true,
+//     required: true,
+//   },
+//   needs: String,
+//   breathe: Boolean,
+//   owner: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'User',
+//   },
+// });
+
+const YourMood = mongoose.model("YourMoods", {
+  moodId: {
     type: String,
-    unique: true,
-    required: true,
   },
-  title: {
-    type: String,
-    unique: true,
-    required: true,
+  date: {
+    type: Date,
   },
-  needs: String,
-  breathe: Boolean,
   owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
   },
 });
 

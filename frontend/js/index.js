@@ -1,3 +1,5 @@
+// -------------------- DROPDOWN + DISPLAY MOODS --------------------
+
 const dropdowns = document.querySelectorAll(".dropdown");
 
 const fetchData = async () => {
@@ -7,8 +9,10 @@ const fetchData = async () => {
   moodsData.map((mood) => {
     const icon = mood.icon;
     const title = mood.title;
+    const moodId = mood._id;
     const newDiv = document.createElement("li");
-    const newContent = document.createTextNode(icon + title);
+    newDiv.setAttribute("data-moodId", moodId);
+    const newContent = document.createTextNode(icon + " " + title);
     newDiv.appendChild(newContent);
     const currentDiv = document.querySelector(".menu");
     currentDiv.appendChild(newDiv);
@@ -17,9 +21,7 @@ const fetchData = async () => {
   document.querySelector(".menu :first-child").classList.add("active");
 
   if (moodsData) {
-    //Loop through all dropdown elements
     dropdowns.forEach((dropdown) => {
-      // Get inner elements from each dropdown
       const select = dropdown.querySelector(".select");
       const caret = dropdown.querySelector(".caret");
       const menu = dropdown.querySelector(".menu");
@@ -56,3 +58,32 @@ const fetchData = async () => {
 };
 
 fetchData();
+
+const valueIconMood = document.querySelector(".menu li").value;
+console.log(valueIconMood);
+
+// -------------------- SUBMIT SELECT MOOD IN DATABASE --------------------
+
+const handleSubmit = async () => {
+  const response = await axios.post(
+    "http://localhost:8080/yourmood/create",
+    {
+      moodId: "id du mood",
+      userId: "id de l'utilisateur",
+      date: "date de creation",
+    },
+    {
+      headers: {
+        Authorization: "Bearer " + response.data.token,
+        // "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+};
+
+document.querySelector("#moods-form").addEventListener("submit", () => {
+  const valueIconMood = document.querySelector(".menu li").value;
+  console.log(valueIconMood);
+  // const valueTitleMood = document.querySelector("#login-password").value;
+  // handleSubmit(valueEmail, valuePassword);
+});
