@@ -32,7 +32,12 @@ router.post("/user/signup", async (req, res) => {
             salt: salt,
           });
           await newUser.save();
-          res.json("Your account has been created successfully");
+          res.status(200).json({
+            _id: newUser._id,
+            username: newUser.username,
+            email: newUser.email,
+            token: newUser.token,
+          });
         } else {
           res.status(400).json("All fields are required");
         }
@@ -46,12 +51,18 @@ router.post("/user/signup", async (req, res) => {
 router.post("/user/login", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
+    console.log(user);
     if (user) {
       const hashCheck = SHA256(req.body.password + user.salt).toString(
         encBase64
       );
       if (hashCheck === user.hash) {
-        res.json({ token: user.token });
+        res.status(200).json({
+          _id: user._id,
+          username: user.username,
+          email: user.email,
+          token: user.token,
+        });
         console.log(req.headers.authorization);
       } else {
         res.status(400).json("Unauthorized");

@@ -11,9 +11,9 @@ const handleSubmit = async (email, password) => {
       alert("Une erreur est survenue, veuillez réssayer.");
     }
   } catch (error) {
-    // if (error.response.status === 401 || error.response.status === 400) {
-    //   alert("Mauvais email et/ou mot de passe");
-    // }
+    if (error.response.status === 400) {
+      alert("Mauvais email et/ou mot de passe");
+    }
     console.log(error.message);
   }
 };
