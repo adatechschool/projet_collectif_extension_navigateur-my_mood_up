@@ -1,6 +1,6 @@
 #main-container-index {
   font-family: Helvetica, sans-serif;
-  background: #23242a;
+  background: #aed9e0;
   width: 400px;
   height: 500px;
   display: flex;
@@ -8,19 +8,53 @@
   justify-content: center;
   align-items: center;
   /* flex-wrap: wrap; */
-  border: solid 1px blue;
   padding-top: 40px;
 }
 
-.button-select {
+#moods-form {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+
+.sep {
+  height: 1px;
   background: #fff;
-  color: #2a2f3b;
-  border: 2px #2a2f3b solid;
+  margin-top: 60px;
+}
+
+.button-select {
+  background: #284448;
+  color: #53838b;
   border-radius: 0.5rem;
   padding: 1em;
   cursor: pointer;
   text-align: center;
   margin-top: 20px;
+  border: none;
+  transition: 0.3s;
+}
+
+.button-select:hover {
+  background: #17282a;
+  color: #53838b;
+}
+
+.button-breathe {
+  background: #ffa69e;
+  color: #faf3dd;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 1em;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 60px;
+  transition: 0.3s;
+}
+
+.button-breathe:hover {
+  background: #ff8074;
+  color: #faf3dd;
 }
 
 .dropdown {
@@ -34,12 +68,11 @@
 }
 
 .select {
-  background: #2a2f3b;
-  color: #fff;
+  background: #b8f2e6;
+  color: #53838b;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 2px #2a2f3b solid;
   border-radius: 0.5rem;
   padding: 1em;
   cursor: pointer;
@@ -52,7 +85,7 @@
 } */
 
 .select:hover {
-  background: #323741;
+  background: #284448;
 }
 
 .caret {
@@ -60,7 +93,7 @@
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 6px solid #fff;
+  border-top: 6px solid #53838b;
   transition: 0.3s;
 }
 
@@ -71,11 +104,11 @@
 .menu {
   list-style: none;
   padding: 0.2em 0.5em;
-  background: #323741;
-  border: 1px #363a43 solid;
+  background: #284448;
+  color: #53838b;
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
   border-radius: 0.5em;
-  color: #9fa5d5;
+
   position: absolute;
   top: 3em;
   left: 50%;
@@ -95,11 +128,11 @@
 }
 
 .menu li:hover {
-  background: #2a2d35;
+  background: #17282a;
 }
 
 .active {
-  background: #23242a;
+  background: #17282a;
 }
 
 .menu-open {

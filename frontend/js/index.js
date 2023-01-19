@@ -97,3 +97,7 @@ document.querySelector("#moods-form").addEventListener("submit", (event) => {
   const date = new Date();
   handleSubmit(moodId, date);
 });
+
+// document.querySelector(".button-breathe").addEventListener("click", () => {
+//   window.open("/breathe.html", "_blank");
+// });

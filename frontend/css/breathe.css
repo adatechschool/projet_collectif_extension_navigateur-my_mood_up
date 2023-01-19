@@ -1,0 +1,49 @@
+:root {
+  --primary-color: #ffa69e;
+  --secondary-color: #aed9e0;
+  --large: 300px;
+  --small: 30px;
+}
+
+body {
+  width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+main {
+  height: 300px;
+  width: 100px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+div {
+  background-color: var(--primary-color);
+  width: var(--small);
+  height: var(--small);
+  border-radius: calc(var(--small) / 2);
+  display: inline-block;
+  animation: breath 8s ease infinite none running;
+}
+
+@keyframes breath {
+  25%,
+  50% {
+    background-color: var(--secondary-color);
+    width: var(--large);
+    height: var(--large);
+    border-radius: calc(var(--large) / 2);
+  }
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: grey;
+  font-size: medium;
+}
