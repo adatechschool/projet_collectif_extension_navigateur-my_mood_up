@@ -51,7 +51,7 @@ router.post("/user/signup", async (req, res) => {
 router.post("/user/login", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
-    console.log(user);
+
     if (user) {
       const hashCheck = SHA256(req.body.password + user.salt).toString(
         encBase64
@@ -63,7 +63,6 @@ router.post("/user/login", async (req, res) => {
           email: user.email,
           token: user.token,
         });
-        console.log(req.headers.authorization);
       } else {
         res.status(400).json("Unauthorized");
       }

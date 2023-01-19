@@ -59,32 +59,38 @@ const fetchData = async () => {
 
 fetchData();
 
-const valueIconMood = document.querySelector(".menu li").value;
-console.log(valueIconMood);
-
 // -------------------- SUBMIT SELECT MOOD IN DATABASE --------------------
 
-const handleSubmit = async () => {
-  // const moodId = document.querySelector(".menu li").getAttribute("data-moodId");
-  const response = await axios.post(
-    "http://localhost:8080/yourmood/create",
-    {
-      moodId: "id du mood",
-      userId: "id de l'utilisateur",
-      date: "date de creation",
-    },
-    {
-      headers: {
-        Authorization: "Bearer " + response.data.token,
-        // "Content-Type": "multipart/form-data",
+const handleSubmit = async (moodId, date) => {
+  const tokenStore = localStorage.getItem("token");
+  try {
+    const response = await axios.post(
+      "http://localhost:8080/yourmood/create",
+      {
+        moodId: moodId,
+        date: date,
       },
+      {
+        headers: {
+          Authorization: "Bearer " + tokenStore,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (tokenStore) {
+      // console.log("coucou le token existe !");
+      // window.location.href = "/login.html";
+      window.open("/dashboard.html", "_blank");
     }
-  );
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
-document.querySelector("#moods-form").addEventListener("submit", () => {
-  const valueIconMood = document.querySelector(".menu li").value;
-  console.log(valueIconMood);
-  // const valueTitleMood = document.querySelector("#login-password").value;
-  // handleSubmit(valueEmail, valuePassword);
+document.querySelector("#moods-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const moodId = document.querySelector(".menu li").getAttribute("data-moodId");
+  const date = new Date();
+  handleSubmit(moodId, date);
 });

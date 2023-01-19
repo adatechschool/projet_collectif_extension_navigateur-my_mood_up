@@ -8,9 +8,7 @@ const YourMood = require("../models/YourMood");
 const isAuthenticated = require("../middlewares/isAuthenticated");
 
 router.post("/yourmood/create", isAuthenticated, async (req, res) => {
-  const { moodId } = req.body;
-  const date = new Date();
-  // const moodId = document.querySelector(".menu li").getAttribute("data-moodId");
+  const { moodId, date } = req.body;
   const newYourMood = new YourMood({
     moodId: moodId,
     date: date,

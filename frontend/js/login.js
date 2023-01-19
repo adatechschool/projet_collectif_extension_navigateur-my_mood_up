@@ -5,7 +5,9 @@ const handleSubmit = async (email, password) => {
       email: email,
       password: password,
     });
-    if (response.data.token) {
+    const token = response.data.token;
+    if (token) {
+      localStorage.setItem("token", token);
       window.location.href = "/index.html";
     } else {
       alert("Une erreur est survenue, veuillez réssayer.");
