@@ -19,11 +19,9 @@ router.post("/yourmood/create", isAuthenticated, async (req, res) => {
   res.json("saved");
 });
 
-router.get("/yourmood/:id", isAuthenticated, async (req, res) => {
+router.get("/yourmood", isAuthenticated, async (req, res) => {
   try {
-    const getYourMood = await YourMood.find({ owner: req.params.id });
-    // const getYourMood = await YourMood.findById(req.params.id);
-    console.log(getYourMood);
+    const getYourMood = await YourMood.find();
     res.json(getYourMood);
   } catch (error) {
     console.log(error.message);

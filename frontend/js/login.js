@@ -1,6 +1,5 @@
 const handleSubmit = async (email, password) => {
   try {
-    console.log(email, password);
     const response = await axios.post("http://localhost:8080/user/login", {
       email: email,
       password: password,
@@ -21,7 +20,6 @@ const handleSubmit = async (email, password) => {
 };
 
 document.querySelector("#login-form").addEventListener("submit", (event) => {
-  console.log("hello");
   event.preventDefault();
   const valueEmail = document.querySelector("#login-email").value;
   const valuePassword = document.querySelector("#login-password").value;

@@ -54,6 +54,10 @@ const fetchData = async () => {
         });
       });
     });
+
+    // J'enregistre mes humeurs dans le local storage.
+    let myMoodsData = JSON.stringify(moodsData);
+    localStorage.setItem("myMoodsData", myMoodsData);
   }
 };
 
@@ -77,11 +81,10 @@ const handleSubmit = async (moodId, date) => {
         },
       }
     );
-
     if (tokenStore) {
-      // console.log("coucou le token existe !");
-      // window.location.href = "/login.html";
       window.open("/dashboard.html", "_blank");
+    } else {
+      alert("Veuillez vous connecter");
     }
   } catch (error) {
     console.log(error.message);
