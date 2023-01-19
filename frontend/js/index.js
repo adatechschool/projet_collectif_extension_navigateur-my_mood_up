@@ -65,6 +65,7 @@ console.log(valueIconMood);
 // -------------------- SUBMIT SELECT MOOD IN DATABASE --------------------
 
 const handleSubmit = async () => {
+  // const moodId = document.querySelector(".menu li").getAttribute("data-moodId");
   const response = await axios.post(
     "http://localhost:8080/yourmood/create",
     {
