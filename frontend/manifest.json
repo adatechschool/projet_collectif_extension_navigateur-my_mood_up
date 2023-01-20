@@ -21,7 +21,7 @@
       "128": "./img/icon-128x128.png"
     }
   },
-  "options_page": "./options.html",
+
   "permissions": ["activeTab", "tabs", "storage", "scripting"],
   "host_permissions": ["https://www.google.com/*"]
 }

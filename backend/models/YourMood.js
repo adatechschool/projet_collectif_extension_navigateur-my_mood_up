@@ -5,7 +5,7 @@ const YourMood = mongoose.model("YourMoods", {
     type: String,
   },
   date: {
-    type: Date,
+    type: String,
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,

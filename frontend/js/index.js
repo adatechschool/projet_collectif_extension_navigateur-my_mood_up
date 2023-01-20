@@ -93,7 +93,18 @@ const handleSubmit = async (moodId, date) => {
 
 document.querySelector("#moods-form").addEventListener("submit", (event) => {
   event.preventDefault();
-  const moodId = document.querySelector(".menu li").getAttribute("data-moodId");
-  const date = new Date();
+
+  // Display creation date
+  const dateObj = new Date();
+  const month = dateObj.getUTCMonth() + 1;
+  const day = dateObj.getUTCDate();
+  const year = dateObj.getUTCFullYear();
+  const hour = dateObj.getHours();
+  const min = dateObj.getMinutes();
+  const date = `Posté le ${day}/${month}/${year} à ${hour}h${min}`;
+
+  const moodId = document
+    .querySelector(".menu li.active")
+    .getAttribute("data-moodId");
   handleSubmit(moodId, date);
 });

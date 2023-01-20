@@ -75,8 +75,6 @@ const fetchMyMoods = async () => {
         const insertDate = document.createTextNode(dateObj);
         DateContent.appendChild(insertDate);
       });
-
-      // document.querySelector('.hello').innerHTML =
     } else {
       alert("Veuillez vous connecter");
     }
