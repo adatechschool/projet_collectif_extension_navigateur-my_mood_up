@@ -31,6 +31,7 @@ body {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .needs-content {
@@ -41,8 +42,33 @@ body {
 
 .date-content {
   margin-top: 20px;
+  color: #faf3dd;
   text-align: center;
   background-color: #53838b;
   padding: 10px;
   border-radius: 5px;
+}
+
+.breathe-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-breathe {
+  background: #ffa69e;
+  color: #faf3dd;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 1em;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s;
+  margin-top: 20px;
+  width: 300px;
+}
+
+.button-breathe:hover {
+  background: #ff8074;
+  color: #faf3dd;
 }

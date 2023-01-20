@@ -12,10 +12,12 @@ const fetchMyMoods = async () => {
       // Sauvegarde de l'API moods dans le localStorage
       const myData = localStorage.getItem("myMoodsData");
       const moodsDataList = JSON.parse(myData);
-      console.log(moodsDataList);
 
       // Sauvegarde des moods enregistré dans le compte utilisateur
       const myMoodsData = await response.data;
+
+      console.log("API -->", moodsDataList);
+      console.log("Moods enregistrés ---->", myMoodsData);
 
       // ------------------------ AFFICHAGE DES MOOODS ------------------------
       const myMoodsContainer = document.querySelector(".my-moods");
@@ -51,6 +53,17 @@ const fetchMyMoods = async () => {
             moodContent.appendChild(needsContent);
             const insertNeeds = document.createTextNode(needsObj);
             needsContent.appendChild(insertNeeds);
+
+            // Afficher Breathe
+            if (element.breathe === true) {
+              const breatheContent = document.createElement("div");
+              breatheContent.classList.add("breathe-content");
+              moodContent.appendChild(breatheContent);
+              document.querySelector(".breathe-content").innerHTML =
+                '<a href="./breathe.html"><button class="button-breathe">Respire</button></a>';
+              // const insertBreathe = document.createTextNode(breatheObj);
+              // breatheContent.appendChild(insertBreathe);
+            }
           }
         });
 
@@ -62,6 +75,8 @@ const fetchMyMoods = async () => {
         const insertDate = document.createTextNode(dateObj);
         DateContent.appendChild(insertDate);
       });
+
+      // document.querySelector('.hello').innerHTML =
     } else {
       alert("Veuillez vous connecter");
     }
