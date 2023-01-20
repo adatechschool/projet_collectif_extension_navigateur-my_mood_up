@@ -1,7 +1,7 @@
 const fetchMyMoods = async () => {
   const tokenStore = localStorage.getItem("token");
   try {
-    const response = await axios.get("http://localhost:8080/yourmood", {
+    const response = await axios.get("http://localhost:8080/usermoods", {
       headers: {
         Authorization: "Bearer " + tokenStore,
         "Content-Type": "application/json",
@@ -14,24 +14,21 @@ const fetchMyMoods = async () => {
       const moodsDataList = JSON.parse(myData);
 
       // Sauvegarde des moods enregistré dans le compte utilisateur
-      const myMoodsData = await response.data;
-
-      console.log("API -->", moodsDataList);
-      console.log("Moods enregistrés ---->", myMoodsData);
+      const userMoodsData = await response.data;
 
       // ------------------------ AFFICHAGE DES MOOODS ------------------------
       const myMoodsContainer = document.querySelector(".my-moods");
 
-      myMoodsData.map((myMood) => {
+      userMoodsData.map((userMood) => {
         // Création de la div globale du mood
         const moodContent = document.createElement("div");
         moodContent.classList.add("mood-content");
         myMoodsContainer.appendChild(moodContent);
 
-        moodsDataList.forEach((element) => {
-          if (myMood.moodId === element._id) {
+        moodsDataList.forEach((mood) => {
+          if (userMood.moodId === mood._id) {
             // Afficher l'icon
-            const iconObj = element.icon;
+            const iconObj = mood.icon;
             const iconContent = document.createElement("div");
             iconContent.classList.add("icon-content");
             moodContent.appendChild(iconContent);
@@ -39,7 +36,7 @@ const fetchMyMoods = async () => {
             iconContent.appendChild(insertIcon);
 
             // Afficher le title
-            const titleObj = element.title;
+            const titleObj = mood.title;
             const titleContent = document.createElement("div");
             titleContent.classList.add("title-content");
             moodContent.appendChild(titleContent);
@@ -47,7 +44,7 @@ const fetchMyMoods = async () => {
             titleContent.appendChild(insertTitle);
 
             // Afficher les besoins
-            const needsObj = element.needs;
+            const needsObj = mood.needs;
             const needsContent = document.createElement("div");
             needsContent.classList.add("needs-content");
             moodContent.appendChild(needsContent);
@@ -55,7 +52,7 @@ const fetchMyMoods = async () => {
             needsContent.appendChild(insertNeeds);
 
             // Afficher Breathe
-            if (element.breathe === true) {
+            if (mood.breathe === true) {
               const breatheContent = document.createElement("div");
               breatheContent.classList.add("breathe-content");
               moodContent.appendChild(breatheContent);
@@ -71,7 +68,7 @@ const fetchMyMoods = async () => {
         const DateContent = document.createElement("div");
         DateContent.classList.add("date-content");
         moodContent.appendChild(DateContent);
-        const dateObj = myMood.date;
+        const dateObj = userMood.date;
         const insertDate = document.createTextNode(dateObj);
         DateContent.appendChild(insertDate);
       });

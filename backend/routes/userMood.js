@@ -2,27 +2,27 @@ const express = require("express");
 const router = express.Router();
 
 //import models
-const YourMood = require("../models/YourMood");
+const UserMood = require("../models/UserMood");
 
 //import middlewares
 const isAuthenticated = require("../middlewares/isAuthenticated");
 
-router.post("/yourmood/create", isAuthenticated, async (req, res) => {
+router.post("/usermood/create", isAuthenticated, async (req, res) => {
   const { moodId, date } = req.body;
-  const newYourMood = new YourMood({
+  const newUserMood = new UserMood({
     moodId: moodId,
     date: date,
     owner: req.user,
   });
 
-  await newYourMood.save();
+  await newUserMood.save();
   res.json("saved");
 });
 
-router.get("/yourmood", isAuthenticated, async (req, res) => {
+router.get("/usermoods", isAuthenticated, async (req, res) => {
   try {
-    const getYourMood = await YourMood.find();
-    res.json(getYourMood);
+    const getUserMoods = await UserMood.find();
+    res.json(getUserMoods);
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ message: error.message });

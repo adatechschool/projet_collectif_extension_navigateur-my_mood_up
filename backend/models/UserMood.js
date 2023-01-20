@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const YourMood = mongoose.model("YourMoods", {
+const YourMood = mongoose.model("UserMoods", {
   moodId: {
     type: String,
   },

@@ -4,9 +4,9 @@ const dropdowns = document.querySelectorAll(".dropdown");
 
 const fetchData = async () => {
   const response = await axios.get("http://localhost:8080/moods");
-  const moodsData = await response.data;
+  const moodsDataList = await response.data;
 
-  moodsData.map((mood) => {
+  moodsDataList.map((mood) => {
     const icon = mood.icon;
     const title = mood.title;
     const moodId = mood._id;
@@ -20,7 +20,7 @@ const fetchData = async () => {
 
   document.querySelector(".menu :first-child").classList.add("active");
 
-  if (moodsData) {
+  if (moodsDataList) {
     dropdowns.forEach((dropdown) => {
       const select = dropdown.querySelector(".select");
       const caret = dropdown.querySelector(".caret");
@@ -56,7 +56,7 @@ const fetchData = async () => {
     });
 
     // J'enregistre mes humeurs dans le local storage.
-    let myMoodsData = JSON.stringify(moodsData);
+    let myMoodsData = JSON.stringify(moodsDataList);
     localStorage.setItem("myMoodsData", myMoodsData);
   }
 };
@@ -69,7 +69,7 @@ const handleSubmit = async (moodId, date) => {
   const tokenStore = localStorage.getItem("token");
   try {
     const response = await axios.post(
-      "http://localhost:8080/yourmood/create",
+      "http://localhost:8080/usermood/create",
       {
         moodId: moodId,
         date: date,

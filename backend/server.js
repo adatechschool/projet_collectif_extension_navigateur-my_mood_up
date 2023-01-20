@@ -10,7 +10,7 @@ const userRoutes = require("./routes/user");
 app.use(userRoutes);
 const moodRoutes = require("./routes/mood");
 app.use(moodRoutes);
-const YourMoodRoutes = require("./routes/yourMood");
+const YourMoodRoutes = require("./routes/userMood");
 app.use(YourMoodRoutes);
 
 mongoose
