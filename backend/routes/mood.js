@@ -6,7 +6,7 @@ const router = express.Router();
 const Mood = require("../models/Mood");
 
 router.post("/mood/create", async (req, res) => {
-  const { icon, title, needs, breathe } = req.body; //destructuring
+  const { icon, title, needs, breathe } = req.body;
 
   const iconCheck = await Mood.findOne({ icon: icon });
   const titleCheck = await Mood.findOne({ title: title });
@@ -27,7 +27,7 @@ router.post("/mood/create", async (req, res) => {
       res.json("Saved!");
     }
   } else {
-    res.json("All fields are required"); // message d'erreur si tous les champs sont pas rempli
+    res.json("All fields are required");
   }
 });
 
